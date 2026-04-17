@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import ProjectsPreview from '../components/ProjectsPreview.astro';
+import WhyUs from '../components/WhyUs.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Process from '../components/Process.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="KN Architects & Builders | Crafting Timeless Spaces in Chennai">
+  <Nav activePage="home" />
+  <main>
+    <Hero />
+    <About />
+    <Services />
+    <ProjectsPreview />
+    <WhyUs />
+    <Testimonials />
+    <Process />
+    <Contact />
+  </main>
+  <Footer />
+
+  <script src="../scripts/animations.ts"></script>
+</Layout>

@@ -1,0 +1,253 @@
+---
+interface Props {
+  activePage?: 'home' | 'projects';
+}
+const { activePage = 'home' } = Astro.props;
+---
+
+<nav class="nav" id="nav">
+  <a href="/" class="nav-logo">
+    <img class="nav-logo-img" src="/logo.png" alt="KN Architects & Builders logo" width="44" height="44" />
+    <div class="nav-logo-text">
+      <strong>KN Architects</strong>
+      <span>& Builders</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li>
+      <a href="/projects" class={activePage === 'projects' ? 'active' : ''}>
+        Projects
+      </a>
+    </li>
+    <li><a href="/#testimonials">Testimonials</a></li>
+    <li><a href="/#contact" class="nav-cta">Book Consultation</a></li>
+  </ul>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <a href="/#about" class="mobile-link">About</a>
+  <a href="/#services" class="mobile-link">Services</a>
+  <a href="/projects" class="mobile-link">Projects</a>
+  <a href="/#testimonials" class="mobile-link">Testimonials</a>
+  <a href="/#contact" class="mobile-link mobile-link--cta">Book Consultation</a>
+</div>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 1.5rem 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: padding 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+  }
+  .nav.scrolled {
+    padding: 1rem 5vw;
+    background: rgba(13, 13, 13, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  /* Logo */
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    flex-shrink: 0;
+  }
+  .nav-logo-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+  }
+  .nav-logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-logo-text strong {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+  }
+  .nav-logo-text span {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  /* Links */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--silver-light);
+    transition: color 0.25s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--red);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--cream); }
+  .nav-links a:hover::after,
+  .nav-links a.active::after { width: 100%; }
+  .nav-links .nav-cta {
+    background: var(--red);
+    color: white !important;
+    padding: 0.6rem 1.4rem;
+    font-size: 0.68rem;
+    transition: background 0.25s !important;
+  }
+  .nav-links .nav-cta:hover { background: var(--red-deep) !important; }
+  .nav-links .nav-cta::after { display: none !important; }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    width: 26px;
+    height: 1.5px;
+    background: var(--cream);
+    display: block;
+    transition: var(--transition);
+  }
+  .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--black-deep);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .mobile-close {
+    position: absolute;
+    top: 1.5rem; right: 5vw;
+    background: none;
+    border: none;
+    color: var(--silver);
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.25s;
+  }
+  .mobile-close:hover { color: var(--cream); }
+  .mobile-link {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+    transition: color 0.25s;
+  }
+  .mobile-link:hover { color: var(--red); }
+  .mobile-link--cta {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--red);
+    color: white !important;
+    padding: 0.85rem 2.5rem;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: flex; }
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('nav')!;
+  const hamburger = document.getElementById('hamburger')!;
+  const mobileMenu = document.getElementById('mobileMenu')!;
+  const mobileClose = document.getElementById('mobileClose')!;
+
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Toggle menu
+  function openMenu() {
+    hamburger.classList.add('active');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  mobileClose.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+</script>

@@ -1,0 +1,157 @@
+---
+const featuredProjects = [
+  {
+    name: 'Villa Serenity',
+    category: 'Residential',
+    image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=900&q=80',
+    alt: 'Villa Serenity — modern residential villa',
+  },
+  {
+    name: 'The Meridian',
+    category: 'Interior Design',
+    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=700&q=80',
+    alt: 'The Meridian — luxury interior design',
+  },
+  {
+    name: 'Casa Nuvem',
+    category: 'Residential',
+    image: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=700&q=80',
+    alt: 'Casa Nuvem — contemporary residence',
+  },
+  {
+    name: 'Apex Business Centre',
+    category: 'Commercial',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80',
+    alt: 'Apex Business Centre — commercial project',
+  },
+];
+---
+
+<section class="projects-preview" id="projects">
+  <div class="preview-header" data-animate>
+    <div class="preview-header-left">
+      <span class="section-label">Our Work</span>
+      <h2 class="section-heading">Selected Projects</h2>
+    </div>
+    <a href="/projects" class="btn btn-outline-dark">View All Projects</a>
+  </div>
+
+  <div class="preview-grid">
+    {featuredProjects.map((p, i) => (
+      <a href="/projects" class="project-card" data-animate data-delay={String(i + 1)}>
+        <img src={p.image} alt={p.alt} loading="lazy" />
+        <div class="project-overlay">
+          <span class="project-cat">{p.category}</span>
+          <span class="project-name">{p.name}</span>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <div class="preview-footer" data-animate>
+    <a href="/projects" class="btn btn-primary">Explore All Projects</a>
+  </div>
+</section>
+
+<style>
+  .projects-preview {
+    background: var(--off-white);
+    padding: var(--section-pad) 5vw;
+  }
+
+  .preview-header {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .preview-header-left .section-heading { color: var(--black-deep); }
+
+  /* Asymmetric grid */
+  .preview-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 280px 280px;
+    gap: 10px;
+  }
+  .project-card:nth-child(1) { grid-column: 1 / 8; grid-row: 1; }
+  .project-card:nth-child(2) { grid-column: 8 / 13; grid-row: 1; }
+  .project-card:nth-child(3) { grid-column: 1 / 6; grid-row: 2; }
+  .project-card:nth-child(4) { grid-column: 6 / 13; grid-row: 2; }
+
+  .project-card {
+    position: relative;
+    overflow: hidden;
+    display: block;
+  }
+  .project-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .project-card:hover img { transform: scale(1.06); }
+
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(13,13,13,0.88) 0%,
+      rgba(13,13,13,0.15) 55%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.75rem;
+  }
+  .project-card:hover .project-overlay { opacity: 1; }
+
+  .project-cat {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.3rem;
+  }
+  .project-name {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: white;
+  }
+
+  .preview-footer {
+    max-width: 1200px;
+    margin: 2.5rem auto 0;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .preview-header { flex-direction: column; align-items: flex-start; }
+    .preview-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 220px 220px;
+    }
+    .project-card:nth-child(1) { grid-column: 1 / -1; grid-row: 1; }
+    .project-card:nth-child(2) { grid-column: 1; grid-row: 2; }
+    .project-card:nth-child(3) { grid-column: 2; grid-row: 2; }
+    .project-card:nth-child(4) { grid-column: 1 / -1; grid-row: 3; }
+    .preview-grid { grid-template-rows: 220px 220px 220px; }
+    .project-overlay { opacity: 1; }
+  }
+  @media (max-width: 480px) {
+    .preview-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 220px);
+    }
+    .project-card { grid-column: 1 / -1 !important; grid-row: auto !important; }
+  }
+</style>

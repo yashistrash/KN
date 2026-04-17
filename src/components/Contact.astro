@@ -1,0 +1,287 @@
+---
+---
+
+<section class="contact" id="contact">
+  <div class="contact-header" data-animate>
+    <span class="section-label">Get In Touch</span>
+    <h2 class="section-heading">
+      Let's Build Something<br /><em>Extraordinary</em>
+    </h2>
+  </div>
+
+  <div class="contact-inner">
+    <!-- Info side -->
+    <div class="contact-info" data-animate="left">
+      <p class="contact-intro">We'd love to hear<br />about your project.</p>
+
+      <div class="contact-detail">
+        <div class="detail-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+        </div>
+        <div class="detail-text">
+          <strong>Address</strong>
+          <span>West Tambaram, Chennai<br />Tamil Nadu 600045</span>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="detail-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <div class="detail-text">
+          <strong>Phone</strong>
+          <span><a href="tel:+919876543210">+91 98765 43210</a></span>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="detail-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div class="detail-text">
+          <strong>Email</strong>
+          <span><a href="mailto:info@knbuilders.in">info@knbuilders.in</a></span>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="detail-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
+          </svg>
+        </div>
+        <div class="detail-text">
+          <strong>Working Hours</strong>
+          <span>Mon–Sat, 9:00 AM – 6:00 PM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form side -->
+    <form class="contact-form" id="contactForm" data-animate="right" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="service">Service Needed</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option>Architectural Design</option>
+            <option>Structural Engineering</option>
+            <option>Interior Design</option>
+            <option>Residential Construction</option>
+            <option>Commercial Construction</option>
+            <option>Renovation &amp; Remodeling</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group form-group--full">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" placeholder="Tell us about your project — location, size, timeline, budget..." rows="5"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary form-submit" id="submitBtn">
+        Send Message
+        <svg width="16" height="8" viewBox="0 0 16 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M0 4h14M10 1l4 3-4 3"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <!-- Map placeholder -->
+  <div class="contact-map" data-animate>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+      <circle cx="12" cy="9" r="2.5"/>
+    </svg>
+    <span>West Tambaram, Chennai &mdash; Map</span>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--charcoal);
+    padding: var(--section-pad) 5vw;
+  }
+
+  .contact-header {
+    max-width: 1200px;
+    margin: 0 auto 3.5rem;
+    text-align: center;
+  }
+  .contact-header .section-heading {
+    color: var(--cream);
+  }
+  .contact-header em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* Info */
+  .contact-intro {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 2.25rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+  .detail-icon {
+    width: 40px; height: 40px;
+    border: 1px solid rgba(196,30,30,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--red);
+    flex-shrink: 0;
+  }
+  .detail-text strong {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-bottom: 0.35rem;
+  }
+  .detail-text span {
+    font-size: 0.9rem;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+  .detail-text a {
+    color: var(--cream);
+    transition: color 0.25s;
+  }
+  .detail-text a:hover { color: var(--red); }
+
+  /* Form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .form-group--full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 0.63rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  input, select, textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--cream);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    padding: 0.9rem 1rem;
+    transition: border-color 0.3s;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23808080' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+  select option { background: var(--charcoal); }
+  textarea { resize: vertical; min-height: 130px; }
+  input:focus, select:focus, textarea:focus { border-color: var(--red); }
+  input::placeholder, textarea::placeholder { color: var(--silver); opacity: 0.55; }
+
+  .form-submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  /* Map */
+  .contact-map {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    height: 200px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: var(--silver);
+  }
+  .contact-map svg { opacity: 0.5; color: var(--red); }
+  .contact-map span { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+  @media (max-width: 900px) {
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const btn  = document.getElementById('submitBtn') as HTMLButtonElement;
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.innerHTML = 'Message Sent ✓';
+    btn.style.background = '#2a7a2a';
+
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.innerHTML = `Send Message <svg width="16" height="8" viewBox="0 0 16 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 4h14M10 1l4 3-4 3"/></svg>`;
+      btn.style.background = '';
+      form.reset();
+    }, 3500);
+  });
+</script>

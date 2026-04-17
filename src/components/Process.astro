@@ -1,0 +1,295 @@
+---
+const steps = [
+  {
+    num: '01',
+    label: 'Consultation',
+    title: 'We Start by\nListening to You',
+    desc: 'Every great structure begins with a conversation. We sit with you — understanding your vision, your budget, your family, your aspirations — before we touch a single blueprint. This is where your dream takes its first breath.',
+    bullets: ['Site analysis & feasibility study', 'Budget planning & phasing', 'Vision alignment workshop'],
+    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=85',
+    alt: 'Architects consulting with client over project plans',
+  },
+  {
+    num: '02',
+    label: 'Design',
+    title: 'Your Vision,\nRedrawn in Detail',
+    desc: 'Our architects translate your aspirations into precise architectural drawings and photorealistic 3D visualizations. Every room, every façade, every material choice is refined until the design feels undeniably right.',
+    bullets: ['Architectural & structural drawings', '3D renders & walkthroughs', 'Material & finish selection'],
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85',
+    alt: 'Architect reviewing detailed architectural blueprints',
+  },
+  {
+    num: '03',
+    label: 'Construction',
+    title: 'Precision Built\nBrick by Brick',
+    desc: 'With approved plans in hand, our skilled craftsmen take over — building with premium materials, under rigorous supervision. Every milestone is tracked. Every standard is non-negotiable. You receive regular updates throughout.',
+    bullets: ['Dedicated project manager on-site', 'Weekly progress reporting', 'Quality inspections at every stage'],
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=85',
+    alt: 'Construction site with skilled workers building',
+  },
+  {
+    num: '04',
+    label: 'Handover',
+    title: 'The Keys Are\nYours to Keep',
+    desc: 'We conduct a thorough quality audit before you ever step inside. Every finish is inspected, every system tested. Then we walk you through your new space — and hand you the keys to a home built exactly as promised.',
+    bullets: ['Full quality & snag inspection', 'Complete documentation handover', 'Post-handover support warranty'],
+    image: 'https://images.unsplash.com/photo-1560184897-ae75f418493e?w=900&q=85',
+    alt: 'Beautiful finished luxury home ready for handover',
+  },
+];
+---
+
+<section class="process" id="process">
+  <!-- Section header -->
+  <div class="process-header" data-animate>
+    <span class="section-label">How We Work</span>
+    <h2 class="section-heading">A Process Built<br />Around You</h2>
+    <p class="process-intro">Four deliberate steps. One seamless experience.</p>
+  </div>
+
+  <!-- Steps -->
+  <div class="process-steps">
+    {steps.map((step, i) => {
+      const isEven = i % 2 === 1;
+      return (
+        <div class={`process-step ${isEven ? 'step--reverse' : ''}`}>
+          <!-- Image panel -->
+          <div class="step-image-wrap" data-animate={isEven ? 'right' : 'left'}>
+            <img
+              src={step.image}
+              alt={step.alt}
+              loading="lazy"
+              class="step-image"
+            />
+            <div class="step-image-overlay"></div>
+            <!-- Step number watermark on image -->
+            <div class="step-watermark" aria-hidden="true">{step.num}</div>
+          </div>
+
+          <!-- Content panel -->
+          <div class="step-content" data-animate={isEven ? 'left' : 'right'}>
+            <div class="step-content-inner">
+              <div class="step-eyebrow">
+                <span class="step-num-label">{step.num}</span>
+                <span class="step-category">{step.label}</span>
+              </div>
+              <h3 class="step-title">
+                {step.title.split('\n').map((line, j) => (
+                  <>
+                    {j > 0 && <br />}
+                    {line}
+                  </>
+                ))}
+              </h3>
+              <div class="step-accent"></div>
+              <p class="step-desc">{step.desc}</p>
+              <ul class="step-bullets">
+                {step.bullets.map(b => (
+                  <li>
+                    <span class="bullet-dot" aria-hidden="true"></span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</section>
+
+<style>
+  .process {
+    background: var(--charcoal);
+    overflow: hidden;
+  }
+
+  /* Header */
+  .process-header {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: var(--section-pad) 5vw 5rem;
+    text-align: center;
+  }
+  .process-header .section-heading { color: var(--cream); }
+  .process-intro {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--silver);
+    letter-spacing: 0.04em;
+  }
+
+  /* Steps container */
+  .process-steps {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Each step row */
+  .process-step {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    min-height: 520px;
+  }
+  .process-step.step--reverse {
+    grid-template-columns: 45% 55%;
+  }
+  .step--reverse .step-image-wrap { order: 2; }
+  .step--reverse .step-content     { order: 1; }
+
+  /* Image panel */
+  .step-image-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+  .step-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+  }
+  .process-step:hover .step-image {
+    transform: scale(1.04);
+  }
+  .step-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(13,13,13,0.35) 0%,
+      rgba(13,13,13,0.1) 100%
+    );
+  }
+
+  /* Large watermark number on image */
+  .step-watermark {
+    position: absolute;
+    bottom: -0.15em;
+    right: 0.1em;
+    font-family: var(--font-serif);
+    font-size: clamp(7rem, 14vw, 13rem);
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+    opacity: 0.08;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+  }
+  .step--reverse .step-watermark {
+    right: auto;
+    left: 0.1em;
+  }
+
+  /* Content panel */
+  .step-content {
+    display: flex;
+    align-items: center;
+    padding: 4rem 5vw;
+    background: var(--charcoal);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .step--reverse .step-content {
+    background: #161616;
+  }
+
+  .step-content-inner {
+    max-width: 420px;
+  }
+
+  .step-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .step-num-label {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--red);
+    opacity: 0.6;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .step-category {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--silver);
+    border-left: 1px solid rgba(255,255,255,0.15);
+    padding-left: 1rem;
+  }
+
+  .step-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 500;
+    color: var(--cream);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+
+  .step-accent {
+    width: 40px;
+    height: 2px;
+    background: var(--red);
+    margin-bottom: 1.5rem;
+  }
+
+  .step-desc {
+    font-size: 0.925rem;
+    line-height: 1.85;
+    color: var(--silver);
+    margin-bottom: 1.75rem;
+  }
+
+  .step-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .step-bullets li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--silver-light);
+  }
+  .bullet-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .process-step,
+    .process-step.step--reverse {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .step-image-wrap {
+      height: 320px;
+      order: 0 !important;
+    }
+    .step-content {
+      order: 0 !important;
+      padding: 3rem 5vw;
+    }
+    .step--reverse .step-image-wrap { order: 0 !important; }
+    .step--reverse .step-content     { order: 0 !important; }
+    .step-watermark { font-size: 7rem; }
+  }
+
+  @media (max-width: 480px) {
+    .step-image-wrap { height: 240px; }
+    .step-num-label { font-size: 2.5rem; }
+  }
+</style>

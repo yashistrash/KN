@@ -1,0 +1,155 @@
+---
+const services = [
+  {
+    title: 'Architectural Design',
+    desc: 'Custom blueprints tailored to your vision, lifestyle, and site conditions — where every dimension serves a purpose.',
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="6" y="8" width="36" height="32" rx="1"/>
+      <path d="M14 16h20M14 22h20M14 28h12"/>
+      <circle cx="36" cy="32" r="4"/><path d="M39 35l4 4"/>
+    </svg>`,
+  },
+  {
+    title: 'Structural Engineering',
+    desc: 'Rock-solid structural plans that ensure safety and longevity — because the strength of a home is its foundation.',
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 6L6 18v24h36V18L24 6z"/>
+      <path d="M18 42V30h12v12"/>
+      <path d="M6 18l18-12 18 12"/>
+    </svg>`,
+  },
+  {
+    title: 'Interior Design',
+    desc: 'Elegant interiors that balance aesthetics with everyday functionality — spaces that tell your story with every detail.',
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="28" width="22" height="12" rx="2"/>
+      <path d="M4 34h22M10 28v12M20 28v12"/>
+      <path d="M30 20h12v20H30zM30 26h12M36 20v20"/>
+      <line x1="4" y1="44" x2="44" y2="44"/>
+    </svg>`,
+  },
+  {
+    title: 'Residential Construction',
+    desc: 'End-to-end home construction with premium materials and finishes — your dream home, built to last generations.',
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 42V22L24 10l16 12v20H8z"/>
+      <rect x="18" y="30" width="12" height="12"/>
+      <path d="M4 22l20-16 20 16"/>
+    </svg>`,
+  },
+  {
+    title: 'Commercial Construction',
+    desc: 'Office spaces, retail outlets, and commercial buildings built to spec — delivering environments that inspire.',
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="6" y="14" width="36" height="28" rx="1"/>
+      <path d="M6 20h36M6 26h36M6 32h36"/>
+      <path d="M14 14V8h20v6"/>
+      <path d="M14 20v22M20 20v22M26 20v22M32 20v22M38 20v22"/>
+    </svg>`,
+  },
+  {
+    title: 'Renovation & Remodeling',
+    desc: 'Breathe new life into existing spaces with modern upgrades — transforming what is into what it could become.',
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 32l-10 10M32 16l10-10M20 10l18 18-6 6-18-18 6-6z"/>
+      <path d="M12 12c0-6 8-10 14-6"/>
+      <path d="M36 36c0 6-8 10-14 6"/>
+      <circle cx="24" cy="24" r="3"/>
+    </svg>`,
+  },
+];
+---
+
+<section class="services" id="services">
+  <div class="services-header" data-animate>
+    <span class="section-label">What We Do</span>
+    <h2 class="section-heading">Comprehensive Design<br />&amp; Build Solutions</h2>
+  </div>
+
+  <div class="services-grid">
+    {services.map((s, i) => (
+      <div class="service-card" data-animate data-delay={String((i % 3) + 1)}>
+        <div class="service-icon" set:html={s.icon} />
+        <h3 class="service-title">{s.title}</h3>
+        <p class="service-desc">{s.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .services {
+    background: var(--black-deep);
+    padding: var(--section-pad) 5vw;
+  }
+  .services-header {
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    text-align: center;
+  }
+  .services-header .section-heading { color: var(--cream); }
+
+  .services-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .service-card {
+    background: var(--black-deep);
+    padding: 2.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover {
+    background: #111;
+    transform: translateY(-5px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    z-index: 1;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 46px; height: 46px;
+    margin-bottom: 1.75rem;
+    color: var(--red);
+  }
+  .service-icon :global(svg) {
+    width: 100%; height: 100%;
+  }
+
+  .service-title {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 0.875rem;
+  }
+  .service-desc {
+    font-size: 0.875rem;
+    line-height: 1.8;
+    color: var(--silver);
+  }
+
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 580px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>
