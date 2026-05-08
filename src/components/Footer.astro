@@ -71,6 +71,7 @@
     <div class="footer-bottom">
       <p class="footer-copy">© 2026 KN Architects & Builders. All rights reserved.</p>
       <p class="footer-tagline">Designed & Built with Passion in Chennai</p>
+      <p class="footer-poweredby">Powered by <a href="https://thearktech.in" target="_blank" rel="noopener noreferrer">Arktech</a></p>
     </div>
   </div>
 </footer>
@@ -181,6 +182,16 @@
     color: var(--silver);
   }
   .footer-tagline { font-style: italic; }
+  .footer-poweredby {
+    font-size: 0.78rem;
+    color: var(--silver);
+  }
+  .footer-poweredby a {
+    color: var(--red);
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  .footer-poweredby a:hover { opacity: 0.8; }
 
   @media (max-width: 1024px) {
     .footer-top { grid-template-columns: 1fr 1fr; }

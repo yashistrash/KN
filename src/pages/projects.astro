@@ -3,19 +3,25 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
-const projects = [
-  { name: 'Villa Serenity', category: 'residential', year: '2024', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=700&q=80', alt: 'Villa Serenity exterior' },
-  { name: 'The Meridian', category: 'interior', year: '2024', image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=700&q=80', alt: 'The Meridian living room' },
-  { name: 'Casa Nuvem', category: 'residential', year: '2023', image: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=700&q=80', alt: 'Casa Nuvem bedroom' },
-  { name: 'Apex Business Centre', category: 'commercial', year: '2024', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80', alt: 'Apex Business Centre office' },
-  { name: 'The Garden Residence', category: 'residential', year: '2023', image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=700&q=80', alt: 'The Garden Residence' },
-  { name: 'Luxe Kitchen Redesign', category: 'interior', year: '2023', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80', alt: 'Luxury kitchen redesign' },
-  { name: 'Tambaram Office Park', category: 'commercial', year: '2022', image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80', alt: 'Tambaram Office Park' },
+const ongoing = [
+  { name: 'Skyline Residences', category: 'residential', location: 'Perumbakkam, Chennai', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=700&q=80', alt: 'Skyline Residences under construction' },
+  { name: 'Apex Business Hub', category: 'commercial', location: 'OMR, Chennai', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80', alt: 'Apex Business Hub site' },
+  { name: 'Casa Verde', category: 'residential', location: 'Tambaram, Chennai', image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=700&q=80', alt: 'Casa Verde residential project' },
+];
+
+const upcoming = [
+  { name: 'The Pavilion Suites', category: 'commercial', location: 'Velachery, Chennai', image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80', alt: 'The Pavilion Suites render', eta: 'Q3 2026' },
+  { name: 'Greenview Villas', category: 'residential', location: 'Sholinganallur, Chennai', image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80', alt: 'Greenview Villas concept', eta: 'Q4 2026' },
+  { name: 'Urban Nest Interiors', category: 'interior', location: 'Adyar, Chennai', image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=700&q=80', alt: 'Urban Nest Interiors concept', eta: 'Q2 2026' },
+];
+
+const completed = [
+  { name: 'Villa Serenity', category: 'residential', year: '2024', image: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=700&q=80', alt: 'Villa Serenity exterior' },
+  { name: 'The Meridian', category: 'interior', year: '2024', image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=700&q=80', alt: 'The Meridian living room' },
   { name: 'Heritage Bungalow Renewal', category: 'renovation', year: '2023', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700&q=80', alt: 'Heritage Bungalow Renewal' },
-  { name: 'Sky Villa Penthouse', category: 'residential', year: '2024', image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80', alt: 'Sky Villa Penthouse' },
-  { name: 'Modern Suite Interior', category: 'interior', year: '2022', image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=700&q=80', alt: 'Modern suite interior' },
-  { name: 'Retail Promenade', category: 'commercial', year: '2023', image: 'https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?w=700&q=80', alt: 'Retail Promenade' },
-  { name: 'Complete Home Transformation', category: 'renovation', year: '2024', image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=700&q=80', alt: 'Complete home transformation kitchen' },
+  { name: 'Tambaram Office Park', category: 'commercial', year: '2023', image: 'https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?w=700&q=80', alt: 'Tambaram Office Park' },
+  { name: 'Luxe Kitchen Redesign', category: 'interior', year: '2023', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80', alt: 'Luxury kitchen redesign' },
+  { name: 'Complete Home Transformation', category: 'renovation', year: '2024', image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=700&q=80', alt: 'Complete home transformation' },
 ];
 
 const categoryLabels: Record<string, string> = {
@@ -28,7 +34,7 @@ const categoryLabels: Record<string, string> = {
 
 <Layout
   title="Projects | KN Architects & Builders"
-  description="Explore KN Architects & Builders' portfolio of residential villas, commercial spaces, interior designs, and renovations across Chennai."
+  description="Explore KN Architects & Builders' portfolio — ongoing builds, upcoming developments, and completed projects across Chennai."
 >
   <Nav activePage="projects" />
 
@@ -44,51 +50,151 @@ const categoryLabels: Record<string, string> = {
       </nav>
       <h1 class="page-hero-heading">Our Projects</h1>
       <p class="page-hero-sub">A decade of craftsmanship, vision, and precision</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">{ongoing.length}</span><span class="stat-lbl">Ongoing</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">{upcoming.length}</span><span class="stat-lbl">Upcoming</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">{completed.length}+</span><span class="stat-lbl">Completed</span></div>
+      </div>
     </div>
   </section>
 
-  <!-- FILTER + GRID -->
-  <section class="projects-section">
-    <div class="projects-inner">
-      <!-- Filter bar -->
-      <div class="filter-bar" role="group" aria-label="Filter projects">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="residential">Residential</button>
-        <button class="filter-btn" data-filter="commercial">Commercial</button>
-        <button class="filter-btn" data-filter="interior">Interior Design</button>
-        <button class="filter-btn" data-filter="renovation">Renovation</button>
-      </div>
+  <!-- TAB NAV -->
+  <div class="tab-nav-wrap">
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="all">All Projects</button>
+      <button class="tab-btn" data-tab="ongoing">
+        <span class="tab-dot ongoing-dot"></span>Ongoing
+      </button>
+      <button class="tab-btn" data-tab="upcoming">
+        <span class="tab-dot upcoming-dot"></span>Upcoming
+      </button>
+      <button class="tab-btn" data-tab="completed">
+        <span class="tab-dot completed-dot"></span>Completed
+      </button>
+    </div>
+  </div>
 
-      <!-- Project grid -->
-      <div class="projects-grid" id="projectsGrid">
-        {projects.map((p, i) => (
-          <div
-            class="project-card"
-            data-category={p.category}
-            data-animate
-            data-delay={String((i % 3) + 1)}
-          >
-            <div class="card-image">
-              <img src={p.image} alt={p.alt} loading="lazy" width="600" height="400" />
-            </div>
-            <div class="card-overlay">
-              <span class="card-cat">{categoryLabels[p.category]}</span>
-              <span class="card-name">{p.name}</span>
-            </div>
-            <div class="card-meta">
-              <span class="card-badge">{categoryLabels[p.category]}</span>
-              <span class="card-year">{p.year}</span>
-            </div>
+  <div class="projects-page">
+
+    <!-- ONGOING SECTION -->
+    <section class="proj-section" id="section-ongoing" data-section="ongoing">
+      <div class="proj-section-inner">
+        <div class="section-header">
+          <div class="section-label-row">
+            <span class="pulse-dot"></span>
+            <span class="section-label">Ongoing</span>
           </div>
-        ))}
-      </div>
+          <h2 class="section-title">Active Builds</h2>
+          <p class="section-desc">Projects currently under construction — tracked with precision and care.</p>
+        </div>
 
-      <!-- Empty state -->
-      <p class="empty-state" id="emptyState" style="display:none">
-        No projects found in this category yet.
-      </p>
-    </div>
-  </section>
+        <div class="projects-grid">
+          {ongoing.map((p) => (
+            <div class="project-card ongoing-card">
+              <div class="card-image">
+                <img src={p.image} alt={p.alt} loading="lazy" width="600" height="400" />
+                <div class="status-badge ongoing-badge">
+                  <span class="badge-dot"></span>
+                  In Progress
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="card-top">
+                  <span class="card-cat">{categoryLabels[p.category]}</span>
+                  <span class="card-location">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    {p.location}
+                  </span>
+                </div>
+                <h3 class="card-name">{p.name}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- UPCOMING SECTION -->
+    <section class="proj-section upcoming-section" id="section-upcoming" data-section="upcoming">
+      <div class="proj-section-inner">
+        <div class="section-header">
+          <div class="section-label-row">
+            <span class="section-label upcoming-label">Upcoming</span>
+          </div>
+          <h2 class="section-title">On the Horizon</h2>
+          <p class="section-desc">Projects in planning and design — the next chapter of our portfolio.</p>
+        </div>
+
+        <div class="projects-grid">
+          {upcoming.map((p) => (
+            <div class="project-card upcoming-card">
+              <div class="card-image">
+                <img src={p.image} alt={p.alt} loading="lazy" width="600" height="400" />
+                <div class="status-badge upcoming-badge">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  {p.eta}
+                </div>
+                <div class="upcoming-overlay">
+                  <span>Coming Soon</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="card-top">
+                  <span class="card-cat">{categoryLabels[p.category]}</span>
+                  <span class="card-location">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    {p.location}
+                  </span>
+                </div>
+                <h3 class="card-name">{p.name}</h3>
+                <p class="eta-row">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  Expected: <strong>{p.eta}</strong>
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPLETED SECTION -->
+    <section class="proj-section completed-section" id="section-completed" data-section="completed">
+      <div class="proj-section-inner">
+        <div class="section-header">
+          <div class="section-label-row">
+            <span class="section-label completed-label">Completed</span>
+          </div>
+          <h2 class="section-title">Delivered Projects</h2>
+          <p class="section-desc">Spaces handed over with pride — each one a testament to our craft.</p>
+        </div>
+
+        <div class="projects-grid completed-grid">
+          {completed.map((p, i) => (
+            <div class="project-card completed-card" data-delay={String((i % 3) + 1)}>
+              <div class="card-image">
+                <img src={p.image} alt={p.alt} loading="lazy" width="600" height="400" />
+                <div class="card-hover-overlay">
+                  <span class="hover-cat">{categoryLabels[p.category]}</span>
+                  <span class="hover-name">{p.name}</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="card-top">
+                  <span class="card-cat">{categoryLabels[p.category]}</span>
+                  <span class="card-year">{p.year}</span>
+                </div>
+                <h3 class="card-name">{p.name}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
 
   <!-- CTA -->
   <section class="projects-cta">
@@ -103,11 +209,11 @@ const categoryLabels: Record<string, string> = {
 </Layout>
 
 <style>
-  /* PAGE HERO */
+  /* ─── PAGE HERO ─────────────────────────────────── */
   .page-hero {
     position: relative;
-    height: 46vh;
-    min-height: 320px;
+    height: 52vh;
+    min-height: 360px;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -122,7 +228,7 @@ const categoryLabels: Record<string, string> = {
   .page-hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(13,13,13,0.78);
+    background: rgba(13,13,13,0.80);
   }
   .page-hero-content {
     position: relative;
@@ -157,76 +263,168 @@ const categoryLabels: Record<string, string> = {
     font-size: clamp(2.8rem, 6vw, 5rem);
     font-weight: 400;
     color: var(--cream);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
   }
   .page-hero-sub {
     font-size: 1rem;
     color: var(--silver-light);
     font-weight: 300;
+    margin-bottom: 2.5rem;
   }
 
-  /* PROJECTS SECTION */
-  .projects-section {
-    background: var(--off-white);
-    padding: 4rem 5vw 6rem;
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
   }
-  .projects-inner { max-width: 1200px; margin: 0 auto; }
+  .stat { display: flex; flex-direction: column; gap: 0.2rem; }
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--cream);
+    line-height: 1;
+  }
+  .stat-lbl {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+  .stat-div {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.15);
+  }
 
-  /* Filter */
-  .filter-bar {
+  /* ─── TAB NAV ───────────────────────────────────── */
+  .tab-nav-wrap {
+    background: var(--black-deep);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+  }
+  .tab-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5vw;
+    display: flex;
+    gap: 0;
+  }
+  .tab-btn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 3rem;
-  }
-  .filter-btn {
     font-family: var(--font-sans);
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 0.6rem 1.4rem;
-    border: 1px solid rgba(26,26,26,0.2);
+    color: var(--silver);
     background: transparent;
-    color: var(--gray);
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 1.1rem 1.75rem;
     cursor: pointer;
-    transition: all 0.25s;
+    transition: color 0.25s, border-color 0.25s;
   }
-  .filter-btn:hover {
-    border-color: var(--charcoal);
-    color: var(--charcoal);
+  .tab-btn:hover { color: var(--cream); }
+  .tab-btn.active {
+    color: var(--cream);
+    border-bottom-color: var(--red);
   }
-  .filter-btn.active {
-    background: var(--red);
-    border-color: var(--red);
-    color: white;
+  .tab-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .ongoing-dot  { background: #f59e0b; }
+  .upcoming-dot { background: #60a5fa; }
+  .completed-dot{ background: var(--red); }
+
+  /* ─── SECTIONS ──────────────────────────────────── */
+  .projects-page { background: var(--off-white); }
+
+  .proj-section { padding: 5rem 5vw; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .proj-section-inner { max-width: 1200px; margin: 0 auto; }
+
+  .section-header { margin-bottom: 3rem; }
+  .section-label-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+  .section-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #f59e0b;
+  }
+  .upcoming-label  { color: #3b82f6; }
+  .completed-label { color: var(--red); }
+
+  .pulse-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #f59e0b;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .pulse-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: rgba(245,158,11,0.25);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50%       { transform: scale(1.6); opacity: 0; }
   }
 
-  /* Grid */
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.02em;
+  }
+  .section-desc {
+    font-size: 0.9rem;
+    color: var(--gray);
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  /* ─── GRID ──────────────────────────────────────── */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 
+  /* ─── CARDS ─────────────────────────────────────── */
   .project-card {
-    position: relative;
-    overflow: hidden;
     background: white;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-    transition: box-shadow 0.35s ease, transform 0.35s ease;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    transition: box-shadow 0.35s, transform 0.35s;
   }
   .project-card:hover {
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.14);
     transform: translateY(-4px);
   }
-  .project-card.hidden { display: none; }
 
   .card-image {
+    position: relative;
     overflow: hidden;
-    height: 240px;
+    height: 230px;
   }
   .card-image img {
     width: 100%; height: 100%;
@@ -235,21 +433,74 @@ const categoryLabels: Record<string, string> = {
   }
   .project-card:hover .card-image img { transform: scale(1.06); }
 
-  /* Hover overlay */
-  .card-overlay {
+  /* Status badges */
+  .status-badge {
     position: absolute;
-    inset: 0 0 auto 0;
-    height: 240px;
-    background: linear-gradient(to top, rgba(13,13,13,0.88) 0%, transparent 70%);
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border-radius: 2px;
+  }
+  .ongoing-badge {
+    background: rgba(245,158,11,0.15);
+    color: #f59e0b;
+    border: 1px solid rgba(245,158,11,0.35);
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #f59e0b;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  .upcoming-badge {
+    background: rgba(59,130,246,0.12);
+    color: #60a5fa;
+    border: 1px solid rgba(59,130,246,0.3);
+  }
+
+  /* Upcoming overlay */
+  .upcoming-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13,13,13,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
-    transition: opacity 0.35s ease;
+    transition: opacity 0.3s;
+  }
+  .upcoming-card:hover .upcoming-overlay { opacity: 1; }
+  .upcoming-overlay span {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.6);
+    padding: 0.55rem 1.25rem;
+  }
+
+  /* Completed hover overlay */
+  .card-hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13,13,13,0.88) 0%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.35s;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 1.25rem;
   }
-  .project-card:hover .card-overlay { opacity: 1; }
-  .card-cat {
+  .completed-card:hover .card-hover-overlay { opacity: 1; }
+  .hover-cat {
     font-size: 0.58rem;
     font-weight: 600;
     letter-spacing: 0.22em;
@@ -257,42 +508,63 @@ const categoryLabels: Record<string, string> = {
     color: var(--red);
     margin-bottom: 0.25rem;
   }
-  .card-name {
+  .hover-name {
     font-family: var(--font-serif);
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: white;
   }
 
-  /* Card footer */
-  .card-meta {
+  /* Card body */
+  .card-body { padding: 1.1rem 1.25rem 1.25rem; }
+  .card-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.875rem 1.1rem;
-    background: white;
+    margin-bottom: 0.5rem;
   }
-  .card-badge {
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+  .card-cat {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--red);
+  }
+  .card-location {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.72rem;
+    color: var(--silver);
   }
   .card-year {
     font-size: 0.78rem;
     color: var(--silver);
     font-weight: 500;
   }
-
-  .empty-state {
-    text-align: center;
-    padding: 4rem;
-    color: var(--silver);
-    font-size: 1rem;
-    font-style: italic;
+  .card-name {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.875rem;
   }
 
-  /* CTA */
+  /* ETA row */
+  .eta-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--gray);
+    margin-top: 0.25rem;
+  }
+  .eta-row strong { color: #3b82f6; }
+
+  /* Upcoming section bg */
+  .upcoming-section { background: #f8f9fb; }
+  .completed-section { background: var(--off-white); }
+
+  /* ─── CTA ───────────────────────────────────────── */
   .projects-cta {
     background: var(--black-deep);
     padding: 6rem 5vw;
@@ -313,39 +585,49 @@ const categoryLabels: Record<string, string> = {
     line-height: 1.7;
   }
 
-  @media (max-width: 900px) {
+  /* ─── RESPONSIVE ─────────────────────────────────── */
+  @media (max-width: 1024px) {
     .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 700px) {
+    .tab-btn { padding: 1rem 1.1rem; font-size: 0.65rem; }
+    .hero-stats { gap: 1.25rem; }
   }
   @media (max-width: 560px) {
     .projects-grid { grid-template-columns: 1fr; }
-    .filter-bar { gap: 0.4rem; }
-    .filter-btn { font-size: 0.65rem; padding: 0.5rem 1rem; }
+    .tab-btn { padding: 0.9rem 0.75rem; letter-spacing: 0.06em; }
   }
+
+  /* Tab hide/show */
+  .proj-section.hidden { display: none; }
 </style>
 
 <script src="../scripts/animations.ts"></script>
 
 <script>
-  // Filter logic
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const cards = document.querySelectorAll<HTMLElement>('.project-card');
-  const emptyState = document.getElementById('emptyState')!;
+  const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+  const sections = document.querySelectorAll<HTMLElement>('.proj-section');
 
-  filterBtns.forEach((btn) => {
+  tabBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach((b) => b.classList.remove('active'));
+      tabBtns.forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
 
-      const filter = btn.dataset.filter!;
-      let visibleCount = 0;
+      const tab = btn.dataset.tab!;
 
-      cards.forEach((card) => {
-        const match = filter === 'all' || card.dataset.category === filter;
-        card.classList.toggle('hidden', !match);
-        if (match) visibleCount++;
+      sections.forEach((sec) => {
+        if (tab === 'all') {
+          sec.classList.remove('hidden');
+        } else {
+          const match = sec.dataset.section === tab;
+          sec.classList.toggle('hidden', !match);
+        }
       });
 
-      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+      if (tab !== 'all') {
+        const target = document.getElementById(`section-${tab}`);
+        target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   });
 </script>
